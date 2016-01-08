@@ -96,6 +96,10 @@ DeskMgr.prototype.nextSeatNo = function(seatNo){
 	}
 };
 
+DeskMgr.prototype.deleteDesk = function(deskNo){
+    delete this.desks[deskNo];
+};
+
 //返回当前总桌数
 DeskMgr.prototype.size = function (){
 	var self = this;

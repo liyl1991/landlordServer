@@ -36,7 +36,7 @@ var handler = {
 							offline.remove(seats[p].uid);
 						}
 					}
-					delete deskMgr.desks[deskNo];
+					deskMgr.deleteDesk(deskNo);
 				}
 			} else if(desk.status === util.DESK_STATUS_ROB){
 				desk.status = util.DESK_STATUS_READY;
@@ -44,7 +44,7 @@ var handler = {
 			} else if(desk.status === util.DESK_STATUS_PLAY){
 				if(desk.onlineSize() === 0){//本桌已没有人在线，清除
 					desk.onDestroy();
-					delete deskMgr.desks[deskNo];
+					deskMgr.deleteDesk(deskNo);
 				} else {
 					socket.broadcast.to(deskNo).emit('forceExit', resultData);
 					//延迟出牌，等待玩家回来
